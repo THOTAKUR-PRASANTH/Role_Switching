@@ -39,12 +39,14 @@ class LoginService{
         return this.roleSwitching.menuStructure(userData);
     }
 
-    async employeeRole() {
-        return this.roleSwitching.menuStructure(userData);
+    async employeeRole(userData) {
+        const [roles, menu] = await Promise.all([
+        this.roleSwitching.getRoles(userData),
+        this.roleSwitching.menuStructure(userData)
+    ]);
+    return [roles, menu];
     }
 
-
 }
-
 module.exports = {LoginService};
 

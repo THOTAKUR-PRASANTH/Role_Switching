@@ -14,13 +14,11 @@ class LoginHandler{
             if (!userName || !password) {
                 return res.status(400).json({ status: "Failure", error: "Username and Password are required." });
             }
-
             const user = await this.loginService.loginUser(userName, password);
-
             const userInfo = await getUserInfo(user);
             const tokenDetails = await createToken(userInfo);
             let additionalData = null;
-
+    
             if (user.default_role_id === 1) {
                 additionalData = await this.loginService.studentRole(user);
             } else {

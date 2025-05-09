@@ -77,7 +77,7 @@ const verifyjwt = async function (req, res, next) {
 			return res.status(401).send({ status: "Failure", error: "Unauthorized Token. User Token required." })
 		}
 	} catch (error) {
-		console.log("error ::: ", error);
+		console.log("error ::::: ", error);
 		return res.status(401).send({ status: "Failure", error: 'JWT Token is expired.' })
 	}
 }
